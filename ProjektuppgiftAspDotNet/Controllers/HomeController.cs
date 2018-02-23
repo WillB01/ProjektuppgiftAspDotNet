@@ -14,7 +14,7 @@ namespace ProjektuppgiftAspDotNet.Controllers
         private readonly IUserRepository _userRepository;
         public HomeController(IUserRepository userRepository)
         {
-            _userRepository = userRepository;       
+            _userRepository = userRepository;
         }
         [HttpGet]
         public IActionResult Index()
@@ -28,13 +28,14 @@ namespace ProjektuppgiftAspDotNet.Controllers
             if (ModelState.IsValid)
             {
                 _userRepository.AddUser(user);
+                _userRepository.Save(user);
                 return RedirectToAction("AllComments");
             }
             return View(user);
         }
 
 
-
+        [HttpGet]
         public IActionResult AllComments()
         {
             return View(new CommentListViewModel
@@ -44,10 +45,33 @@ namespace ProjektuppgiftAspDotNet.Controllers
             });
         }
 
-        public IActionResult Edit(int id)
+        [HttpGet]
+        public IActionResult Edit(int? id)
         {
-            return View(_userRepository.GetUserById(id));
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+
+            return View(_userRepository.GetUserById((int)id));
         }
+
+        [HttpPost]
+        public IActionResult Edit(int id, User user)
+        {
+            if (id != user.Id)
+            {
+                return NotFound();
+            }
+
+            _userRepository.Update(user);
+            _userRepository.Save(user);
+            
+            
+            return RedirectToAction("AllComments");
+        }
+
 
 
     }

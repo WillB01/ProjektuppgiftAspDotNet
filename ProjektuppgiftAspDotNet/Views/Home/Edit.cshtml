@@ -4,7 +4,7 @@
 }
 
 <h2>@Model.Name</h2>
-<form asp-action="Edit">
+<form asp-action="Edit" asp-controller="Home" method="post" role="form">
     <div class="form-group">
         <label asp-for="Message" class="control-label"></label>
         <textarea asp-for="Message" class="form-control"></textarea>
