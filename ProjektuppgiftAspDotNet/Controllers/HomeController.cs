@@ -33,6 +33,8 @@ namespace ProjektuppgiftAspDotNet.Controllers
             return View(user);
         }
 
+
+
         public IActionResult AllComments()
         {
             return View(new CommentListViewModel
@@ -41,5 +43,7 @@ namespace ProjektuppgiftAspDotNet.Controllers
                 .OrderByDescending(p => p.Id).ToList()
             });
         }
+
+
     }
 }
