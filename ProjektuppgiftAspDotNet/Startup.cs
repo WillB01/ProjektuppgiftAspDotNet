@@ -26,7 +26,7 @@ namespace ProjektuppgiftAspDotNet
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddTransient<IUserRepository, IUserRepository>();
+            services.AddTransient<IUserRepository, UserRepository>();
             services.AddMvc();
         }
 
