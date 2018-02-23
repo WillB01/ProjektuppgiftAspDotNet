@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ProjektuppgiftAspDotNet.Interface;
 using ProjektuppgiftAspDotNet.Models;
+using ProjektuppgiftAspDotNet.Models.ViewModel;
 
 namespace ProjektuppgiftAspDotNet.Controllers
 {
@@ -34,7 +35,11 @@ namespace ProjektuppgiftAspDotNet.Controllers
 
         public IActionResult AllComments()
         {
-            return View();
+            return View(new CommentListViewModel
+            {
+                GetUser = _userRepository.GetUser
+                .OrderByDescending(p => p.Id).ToList()
+            });
         }
     }
 }

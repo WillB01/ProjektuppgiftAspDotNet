@@ -1,7 +1,16 @@
-﻿
+﻿@model CommentListViewModel
 @{
     ViewData["Title"] = "AllComments";
 }
 
-<h2>AllComments</h2>
+
+
+@foreach (var item in Model.GetUser)
+{
+<div class="card">
+    <h2 class="card-header">@item.Name</h2>
+    <h2 class="card-body">@item.Message</h2>
+</div>
+   
+}
 
