@@ -44,6 +44,11 @@ namespace ProjektuppgiftAspDotNet.Controllers
             });
         }
 
+        public IActionResult Edit(int id)
+        {
+            return View(_userRepository.GetUserById(id));
+        }
+
 
     }
 }

@@ -24,5 +24,9 @@ namespace ProjektuppgiftAspDotNet.Data
             _applicationDbContext.SaveChanges();
         }
 
+        public User GetUserById(int id)
+        {
+            return _applicationDbContext.Users.FirstOrDefault(u => u.Id == id);
+        }
     }
 }

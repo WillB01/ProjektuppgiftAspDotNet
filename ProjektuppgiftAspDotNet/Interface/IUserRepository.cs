@@ -10,5 +10,6 @@ namespace ProjektuppgiftAspDotNet.Interface
     {
         IQueryable<User> GetUser { get; }
         void AddUser(User user);
+        User GetUserById(int id);
     }
 }
