@@ -8,6 +8,7 @@ namespace ProjektuppgiftAspDotNet.Interface
 {
     public interface IUserRepository
     {
-        IQueryable<User> Users { get; set; }
+        IQueryable<User> GetUser { get; }
+        void AddUser(User user);
     }
 }
