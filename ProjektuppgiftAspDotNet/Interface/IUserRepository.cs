@@ -1,4 +1,6 @@
-﻿using ProjektuppgiftAspDotNet.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using ProjektuppgiftAspDotNet.Data;
+using ProjektuppgiftAspDotNet.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +11,13 @@ namespace ProjektuppgiftAspDotNet.Interface
     public interface IUserRepository
     {
         IQueryable<User> GetUser { get; }
-        void AddUser(User user);
+       
         User GetUserById(int id);
 
-        void Save(User user);
-        void Update(User user);
+        void AddUser(User user);
+        void Delete(int id);
+        void Update(int id, User user);
+        
+       
     }
 }

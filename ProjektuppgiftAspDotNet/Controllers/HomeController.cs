@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ProjektuppgiftAspDotNet.Interface;
 using ProjektuppgiftAspDotNet.Models;
 using ProjektuppgiftAspDotNet.Models.ViewModel;
@@ -28,7 +29,7 @@ namespace ProjektuppgiftAspDotNet.Controllers
             if (ModelState.IsValid)
             {
                 _userRepository.AddUser(user);
-                _userRepository.Save(user);
+                
                 return RedirectToAction("AllComments");
             }
             return View(user);
@@ -65,11 +66,9 @@ namespace ProjektuppgiftAspDotNet.Controllers
                 return NotFound();
             }
 
-            _userRepository.Update(user);
-            _userRepository.Save(user);
-            
-            
-            return RedirectToAction("AllComments");
+            _userRepository.Update(id, user);
+                   
+            return RedirectToAction("Edit");
         }
 
 
