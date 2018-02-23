@@ -1,0 +1,22 @@
+﻿@model User
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Forum</h2>
+<form asp-action="Index" method="post" role="form">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Message"></label>
+        <textarea asp-for="Message"></textarea>
+    </div>
+    <div class="form-group">
+        <input type="submit"  class="btn btn-primary" value="Send"/>
+    </div>
+
+</form>
+
+
