@@ -68,7 +68,20 @@ namespace ProjektuppgiftAspDotNet.Controllers
 
             _userRepository.Update(id, user);
                    
-            return RedirectToAction("Edit");
+            return RedirectToAction("AllComments");
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int? id)
+        {
+            return View(_userRepository.GetUserById((int)id));
+        }
+
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {   
+            _userRepository.Delete(id);
+            return RedirectToAction("AllComments");
         }
 
 

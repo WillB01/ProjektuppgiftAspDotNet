@@ -7,12 +7,13 @@
 
 @foreach (var item in Model.GetUser)
 {
-<div class="card">
-    <h2 class="card-header">@item.Name</h2>
-    <h2 class="card-body">@item.Message</h2>
-    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-</div>
-   
+    <div class="card">
+        <h2 class="card-header">@item.Name</h2>
+        <h2 class="card-body">@item.Message</h2>
+        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+    </div>
+    
+
 }
 

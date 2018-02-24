@@ -21,9 +21,7 @@ namespace ProjektuppgiftAspDotNet.Data
         public void AddUser(User user)
         {
             _applicationDbContext.Users.Add(user);
-            _applicationDbContext.SaveChanges();
-           
-            
+            _applicationDbContext.SaveChanges();          
 
         }
 
