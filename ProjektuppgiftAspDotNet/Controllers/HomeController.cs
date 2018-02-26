@@ -85,7 +85,6 @@ namespace ProjektuppgiftAspDotNet.Controllers
             return RedirectToAction("AllComments");
         }
 
-
-
+       
     }
 }
