@@ -17,6 +17,7 @@ namespace ProjektuppgiftAspDotNet.Interface
         void AddUser(User user);
         void Delete(int id);
         void Update(int id, User user);
+        int Like(int id, User user);
         
        
     }

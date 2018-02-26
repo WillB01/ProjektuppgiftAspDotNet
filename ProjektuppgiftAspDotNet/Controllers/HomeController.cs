@@ -85,6 +85,13 @@ namespace ProjektuppgiftAspDotNet.Controllers
             return RedirectToAction("AllComments");
         }
 
+        [HttpGet]
+        public IActionResult Like(int id, User user)
+        {
+            _userRepository.Like(id, user);
+           
+            return RedirectToAction("AllComments");
+        }
        
     }
 }

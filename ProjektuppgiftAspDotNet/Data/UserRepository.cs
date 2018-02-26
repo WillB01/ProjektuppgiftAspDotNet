@@ -52,5 +52,19 @@ namespace ProjektuppgiftAspDotNet.Data
                 _applicationDbContext.SaveChanges();
             }
         }
+
+        public int Like(int id, User user)
+        {
+            var _user = _applicationDbContext
+                .Users
+                .FirstOrDefault(u => u.Id == id);
+            if(user != null)
+            {
+                _user.Like += ++user.Like;
+                _applicationDbContext.SaveChanges();
+            }
+            return user.Like;
+        }
+       
     }
 }
