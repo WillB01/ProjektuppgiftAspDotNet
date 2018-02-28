@@ -37,6 +37,7 @@ namespace ProjektuppgiftAspDotNet.Data
             {
                 user.Name = u.Name;
                 u.Message = user.Message;
+                u.Posted = user.Posted;
                 _applicationDbContext.SaveChanges();
             }
         }
