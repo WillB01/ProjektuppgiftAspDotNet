@@ -8,11 +8,14 @@
     <title></title>
 </head>
 <body>
-    <nav class="navbar navbar-dark">
-        <a asp-controller="Home" asp-action="Index" class="nav-item nav-link">Write Something</a>
-        <a asp-controller="Account" asp-action="Logout" class="nav-item nav-link">Logout</a>
-        
+    <nav class="navbar bg-dark text-white">
+        <div class="navbar-brand">
 
+            <vc:user-identity></vc:user-identity>
+            <a asp-controller="Account" asp-action="Logout">Logout</a>
+        </div>
+        <a asp-controller="Home" asp-action="Index" class="nav-link ">Write Something</a>
+        
     </nav>
     <div class="container body-container">
 
