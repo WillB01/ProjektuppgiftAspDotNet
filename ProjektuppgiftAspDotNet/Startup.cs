@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ProjektuppgiftAspDotNet.Data;
 using ProjektuppgiftAspDotNet.Interface;
+using ProjektuppgiftAspDotNet.Models;
 
 namespace ProjektuppgiftAspDotNet
 {
@@ -27,6 +29,30 @@ namespace ProjektuppgiftAspDotNet
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddTransient<IUserRepository, UserRepository>();
+
+
+
+
+            //testing
+
+            services.AddDbContext<AppIdentityDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("LogInConnection")));
+
+            services.AddIdentity<AppUser, IdentityRole>(options =>
+             {
+                 options.Password.RequiredLength = 6;
+                 options.Password.RequireNonAlphanumeric = false;
+                 options.Password.RequireLowercase = false;
+                 options.Password.RequireUppercase = false;
+                 options.Password.RequireDigit = false;
+             }).AddEntityFrameworkStores<AppIdentityDbContext>().AddDefaultTokenProviders();
+
+
+
+
+
+
+
             services.AddMvc();
         }
 
