@@ -45,7 +45,8 @@ namespace ProjektuppgiftAspDotNet
                  options.Password.RequireLowercase = false;
                  options.Password.RequireUppercase = false;
                  options.Password.RequireDigit = false;
-             }).AddEntityFrameworkStores<AppIdentityDbContext>().AddDefaultTokenProviders();
+             }).AddEntityFrameworkStores<AppIdentityDbContext>()
+                .AddDefaultTokenProviders();
 
 
 
@@ -66,6 +67,8 @@ namespace ProjektuppgiftAspDotNet
 
             app.UseStatusCodePages();
             app.UseStaticFiles();
+            app.UseAuthentication();
+
             app.UseMvc(routes =>
                 routes.MapRoute(
                     name: "default",

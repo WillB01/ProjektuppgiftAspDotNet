@@ -11,6 +11,7 @@ using ProjektuppgiftAspDotNet.Models.ViewModel;
 
 namespace ProjektuppgiftAspDotNet.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly IUserRepository _userRepository;
