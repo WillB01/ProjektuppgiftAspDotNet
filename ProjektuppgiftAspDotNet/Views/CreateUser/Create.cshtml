@@ -1,6 +1,7 @@
-﻿@model ProjektuppgiftAspDotNet.Models.ViewModels.CreateUserModel 
+﻿@model ProjektuppgiftAspDotNet.Models.ViewModels.CreateUserModel
 @{
     ViewData["Title"] = "Create";
+    Layout = "_LoginLayout";
 }
 
 <div class="bg-primary m-1 p-1 text-white">
@@ -23,6 +24,7 @@
 
     <button type="submit" class="btn btn-primary">Create</button>
     <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Cancel</a>
+    <a asp-controller="Account" asp-action="Login" class="btn btn">Log in</a>
 
 
 </form>
