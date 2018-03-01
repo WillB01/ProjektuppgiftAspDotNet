@@ -15,6 +15,7 @@ namespace ProjektuppgiftAspDotNet.Controllers
     {
         private UserManager<AppUser> _userManager;
         private SignInManager<AppUser> _signInManager;
+        
 
         public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
         {

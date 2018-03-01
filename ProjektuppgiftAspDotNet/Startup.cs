@@ -29,6 +29,9 @@ namespace ProjektuppgiftAspDotNet
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IUserIdentityRepository, UserIdentityRepository>();
+            services.AddTransient<IUserLoginIdentity, LoggedInRepository>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 
 
