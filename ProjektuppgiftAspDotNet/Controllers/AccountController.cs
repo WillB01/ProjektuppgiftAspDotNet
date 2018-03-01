@@ -50,5 +50,12 @@ namespace ProjektuppgiftAspDotNet.Controllers
             }
             return View(details);
         }
+
+        [Authorize]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
