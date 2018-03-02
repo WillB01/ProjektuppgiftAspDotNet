@@ -39,6 +39,7 @@ namespace ProjektuppgiftAspDotNet.Data
                      x.Id == userId.Value);
 
             user.Name = b.UserName;
+            user.IdentityId = b.Id;
             _applicationDbContext.Users.Add(user);
             _applicationDbContext.SaveChanges();          
 

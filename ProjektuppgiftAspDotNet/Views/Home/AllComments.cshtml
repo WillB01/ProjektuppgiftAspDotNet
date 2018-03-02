@@ -16,7 +16,7 @@
         </div>
         <h2 class="card-body">@item.Message</h2>
         <a asp-action="Like" asp-route-id="@item.Id">Like</a>
-        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+        <a asp-action="Edit" asp-route-id="@item.Id" asp-route-IdentityId="@item.IdentityId">Edit</a>
         <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
     </div>
 

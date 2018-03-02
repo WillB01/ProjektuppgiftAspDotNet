@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProjektuppgiftAspDotNet.Interface;
@@ -15,12 +17,18 @@ namespace ProjektuppgiftAspDotNet.Controllers
     public class HomeController : Controller
     {
         private readonly IUserRepository _userRepository;
+        private readonly IUserIdentityRepository _userIdentityRepository;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public HomeController(IUserRepository userRepository)
+        public HomeController(IUserRepository userRepository,
+            IUserIdentityRepository userIdentityRepository,
+                IHttpContextAccessor httpContextAccessor)
         {
             _userRepository = userRepository;
+            _userIdentityRepository = userIdentityRepository;
+            _httpContextAccessor = httpContextAccessor;
         }
-       
+
         [HttpGet]
         public IActionResult Index()
         {
@@ -33,7 +41,7 @@ namespace ProjektuppgiftAspDotNet.Controllers
             if (ModelState.IsValid)
             {
                 _userRepository.AddUser(user);
-                
+
                 return RedirectToAction("AllComments");
             }
             return View(user);
@@ -41,6 +49,7 @@ namespace ProjektuppgiftAspDotNet.Controllers
 
 
         [HttpGet]
+       
         public IActionResult AllComments()
         {
             return View(new CommentListViewModel
@@ -51,13 +60,27 @@ namespace ProjektuppgiftAspDotNet.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit(int? id)
+        public IActionResult Edit(int? id,string IdentityId)
         {
-            if (id == null)
+            var userId = _httpContextAccessor.HttpContext
+             .User.FindFirst(ClaimTypes.NameIdentifier);
+            var loggedInUser = _userIdentityRepository
+              .GetAppUser.FirstOrDefault(x =>
+                  x.Id == userId.Value);
+
+            if (id == null || loggedInUser.Id != IdentityId)
             {
                 return NotFound();
             }
 
+            
+
+
+           
+
+            //_userRepository.GetUser.FirstOrDefault(x => x.IdentityId)
+            
+            
 
             return View(_userRepository.GetUserById((int)id));
         }

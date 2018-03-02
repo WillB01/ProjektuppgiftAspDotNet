@@ -13,6 +13,7 @@ namespace ProjektuppgiftAspDotNet.Interface
         IQueryable<User> GetUser { get; }
        
         User GetUserById(int id);
+        
 
         void AddUser(User user);
         void Delete(int id);
