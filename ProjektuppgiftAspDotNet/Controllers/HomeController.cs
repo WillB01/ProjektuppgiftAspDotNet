@@ -73,9 +73,6 @@ namespace ProjektuppgiftAspDotNet.Controllers
                 return NotFound();
             }
 
-            
-
-
            
 
             //_userRepository.GetUser.FirstOrDefault(x => x.IdentityId)
