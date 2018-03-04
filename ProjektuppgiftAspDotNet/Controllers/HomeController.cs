@@ -115,6 +115,27 @@ namespace ProjektuppgiftAspDotNet.Controllers
            
             return RedirectToAction("AllComments");
         }
+
+        [HttpGet]
+        
+        public IActionResult Search()
+        {
+            
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult Search(string Prefix)
+        {
+            var Countries = (from c in _userIdentityRepository.GetAppUser
+                             where c.UserName.StartsWith(Prefix)
+                             select new { c.Email });
+            var b = _userIdentityRepository.GetAppUser
+                .Where(u => u.Email.StartsWith(Prefix));
+           
+            return Json(_userIdentityRepository
+                .GetAppUser.FirstOrDefault(x => x.UserName == Prefix));
+        }
        
     }
 }

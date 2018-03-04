@@ -1,0 +1,36 @@
+﻿@model ProjektuppgiftAspDotNet.Models.AppUser
+
+
+
+
+<form asp-action="Search" role="form"
+      method="post">
+    <input asp-for="UserName" type="text" name="Prefix"/>
+    <input type="submit" />
+</form>
+
+@*<script type="text/javascript">
+    $(document).ready(function () {
+        $("#UserName").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "/Home/Search",
+                    type: "POST",
+                    dataType: "json",
+                    data: { Prefix: request.term },
+                    success: function (data) {
+                        response($.map(data, function (item) {
+                            return { label: item.Email, value: item.Email };
+                        }))
+
+                    }
+                })
+            },
+            messages: {
+                noResults: "Nothing", results: ""
+            }
+        });
+    })
+</script>*@
+
+
