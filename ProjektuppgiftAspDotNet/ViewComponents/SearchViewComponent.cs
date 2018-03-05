@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProjektuppgiftAspDotNet.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,13 @@ namespace ProjektuppgiftAspDotNet.ViewComponents
 {
     public class SearchViewComponent : ViewComponent
     {
+        private IUserIdentityRepository _userIdentityRepository;
+
+        public SearchViewComponent(IUserIdentityRepository userIdentityRepository)
+        {
+            _userIdentityRepository = userIdentityRepository;
+        }
+
         [HttpGet]
         public IViewComponentResult Invoke()
         {

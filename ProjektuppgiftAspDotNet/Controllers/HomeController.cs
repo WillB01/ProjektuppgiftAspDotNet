@@ -43,7 +43,7 @@ namespace ProjektuppgiftAspDotNet.Controllers
             {
                 _userRepository.AddUser(user);
 
-                return RedirectToAction("AllComments");
+                return RedirectToAction("Index");
             }
             return View(user);
         }
@@ -106,7 +106,7 @@ namespace ProjektuppgiftAspDotNet.Controllers
         public IActionResult Delete(int id)
         {   
             _userRepository.Delete(id);
-            return RedirectToAction("AllComments");
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -114,7 +114,7 @@ namespace ProjektuppgiftAspDotNet.Controllers
         {
             _userRepository.Like(id, user);
            
-            return RedirectToAction("AllComments");
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
