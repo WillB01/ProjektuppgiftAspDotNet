@@ -1,8 +1,8 @@
 ﻿@model AppUser
 
     <form method="post" asp-controller="Friends" asp-action="Index">
-        <input type="checkbox" name="add" value="true" />
-        
+        <input type="hidden" name="add" value="true" checked />
+        <input type="hidden" name="name" value="@Model.UserName"  />
         <input type="submit" value="add friend"/>
     </form>
    

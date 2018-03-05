@@ -22,13 +22,17 @@ namespace ProjektuppgiftAspDotNet.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(bool add)
+        public IActionResult Index(bool add, string name)
         {
+            List<string> test = new List<string>();
+           
             if (add)
             {
                 var model = _userIdentityRepository
-              .GetAppUser.FirstOrDefault(u => u.UserName == "Lisa");
-                return View(model);
+              .GetAppUser.FirstOrDefault(u => u.UserName == name);
+                test.Add(model.UserName);
+
+                return View(test);
             }
             return View();
         }
