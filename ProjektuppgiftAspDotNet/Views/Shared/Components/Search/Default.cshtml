@@ -37,18 +37,10 @@
 
 <form asp-action="Search" role="form"
       method="post">
-    <input id="tags"  asp-for="Email" type="text" name="Prefix" class="form-control"/>
-   
+    <div class="form-group">
+        <input id="tags" asp-for="Email" type="text" name="Prefix" class="form-control" />
 
-    <input type="submit" class="auto" />
+
+        <input type="submit" class="auto" value="find" />
+    </div>
 </form>
-
-
-
-
-
-
-
-
-
-

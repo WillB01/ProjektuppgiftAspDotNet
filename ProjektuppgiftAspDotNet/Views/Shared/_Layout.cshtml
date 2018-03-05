@@ -12,11 +12,14 @@
         <div class="navbar-brand">
 
             <vc:user-identity></vc:user-identity>
+
             <a asp-controller="Account" asp-action="Logout">Logout</a>
         </div>
         <a asp-controller="Home" asp-action="Index" class="nav-link ">Write Something</a>
 
     </nav>
+    <vc:search></vc:search>
+
     <div class="container body-container">
 
         @RenderBody()
@@ -24,7 +27,7 @@
     </div>
 
     @*<script src="~/lib/jquery/dist/jquery.js"></script>
-    <script src="~/lib/jqueri-ui/jquery-ui.js"></script>*@
+        <script src="~/lib/jqueri-ui/jquery-ui.js"></script>*@
     @*<script src="~/js/script.js"></script>*@
 </body>
 </html>
