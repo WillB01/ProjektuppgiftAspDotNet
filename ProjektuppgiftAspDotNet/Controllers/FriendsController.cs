@@ -10,10 +10,13 @@ namespace ProjektuppgiftAspDotNet.Controllers
     public class FriendsController : Controller
     {
         private IUserIdentityRepository _userIdentityRepository;
+        private IFriends _friends;
 
-        public FriendsController(IUserIdentityRepository userIdentityRepository)
+        public FriendsController(IUserIdentityRepository userIdentityRepository, 
+            IFriends friends)
         {
             _userIdentityRepository = userIdentityRepository;
+            _friends = friends;
         }
 
         public IActionResult Index()
@@ -24,15 +27,15 @@ namespace ProjektuppgiftAspDotNet.Controllers
         [HttpPost]
         public IActionResult Index(bool add, string name)
         {
-            List<string> test = new List<string>();
+            
            
             if (add)
             {
                 var model = _userIdentityRepository
               .GetAppUser.FirstOrDefault(u => u.UserName == name);
-                test.Add(model.UserName);
 
-                return View(test);
+                
+                return View(model);
             }
             return View();
         }

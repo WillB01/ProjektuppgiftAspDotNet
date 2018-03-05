@@ -32,8 +32,8 @@ namespace ProjektuppgiftAspDotNet
             services.AddTransient<IUserIdentityRepository, UserIdentityRepository>();
             services.AddTransient<IUserLoginIdentity, LoggedInRepository>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            
 
+            services.AddTransient<IFriends, FriendsRepository>();
 
 
 

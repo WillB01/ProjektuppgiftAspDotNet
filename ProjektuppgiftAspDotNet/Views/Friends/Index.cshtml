@@ -1,9 +1,15 @@
-﻿@model List<string>
+﻿@model AppUser
 
+@Model.UserName
 
-
-@foreach (var item in Model)
-{
-    <h1>@item</h1>
+@{ 
+    List<string> termsList = new List<string>();
+    termsList.Add(Model.UserName);
 }
-<h1>hej</h1>
+ 
+@foreach (var item in termsList)
+{
+    @item
+}
+
+

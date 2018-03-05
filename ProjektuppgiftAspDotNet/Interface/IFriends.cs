@@ -8,6 +8,6 @@ namespace ProjektuppgiftAspDotNet.Interface
 {
     public interface IFriends
     {
-        List<Friends> GetFriends { get; }
+        List<AppUser> GetFriends { get; }
     }
 }
