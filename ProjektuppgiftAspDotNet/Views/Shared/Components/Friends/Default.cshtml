@@ -1,6 +1,8 @@
-﻿@model IEnumerable<AppUser>
+﻿@model AppUser
 
-    @foreach (var item in Model)
-    {
-        <h1>@item.UserName</h1>
-    }
+    <form method="post" asp-controller="Friends" asp-action="Index">
+        <input type="checkbox" name="add" value="true" />
+        
+        <input type="submit" value="add friend"/>
+    </form>
+   

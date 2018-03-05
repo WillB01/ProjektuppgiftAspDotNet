@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProjektuppgiftAspDotNet.Interface;
+using ProjektuppgiftAspDotNet.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +17,24 @@ namespace ProjektuppgiftAspDotNet.ViewComponents
             _userIdentityRepository = userIdentityRepository;
         }
 
-        public IViewComponentResult Invoke()
+        public IViewComponentResult Invoke(bool add, string name)
         {
-            var model = _userIdentityRepository.GetAppUser;
-            return View("Default",model);
+            if (add)
+            {
+                var model = _userIdentityRepository
+              .GetAppUser.FirstOrDefault(u => u.UserName == name);
+                return View("Default", model);
+            }
+            return View("Default");
+          
         } 
+
+     
+        private IQueryable<AppUser> AppUser(string id)
+        {
+            return _userIdentityRepository.GetAppUser.Where(x => x.UserName == id).AsQueryable();
+        }
+
+        
     }
 }

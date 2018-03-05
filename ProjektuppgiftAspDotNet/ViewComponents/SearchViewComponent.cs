@@ -16,7 +16,7 @@ namespace ProjektuppgiftAspDotNet.ViewComponents
             _userIdentityRepository = userIdentityRepository;
         }
 
-        [HttpGet]
+       
         public IViewComponentResult Invoke(string Prefix)
         {
 

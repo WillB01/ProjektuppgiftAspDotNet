@@ -15,6 +15,7 @@ namespace ProjektuppgiftAspDotNet.Models
         public string Message { get; set; }
         public int Like { get; set; } = 0;
         public DateTime Posted { get; set; } = DateTime.Now;
+        
 
 
     }

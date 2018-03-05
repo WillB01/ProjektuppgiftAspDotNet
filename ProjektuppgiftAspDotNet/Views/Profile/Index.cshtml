@@ -3,7 +3,12 @@
 
 
 <div class="card ">
-    <h1 class="card-title">@Model.UserName</h1>
+    <h1 class="card-title">@Model.UserName >
+        <vc:friends
+            add="true" 
+            name="@Model.UserName">
+        </vc:friends></h1>
+   
     <img id="myPicture" class="card-img" src="" />
     
 
