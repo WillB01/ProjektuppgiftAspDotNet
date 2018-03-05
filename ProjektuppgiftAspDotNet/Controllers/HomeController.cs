@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ProjektuppgiftAspDotNet.Interface;
 using ProjektuppgiftAspDotNet.Models;
@@ -129,13 +130,26 @@ namespace ProjektuppgiftAspDotNet.Controllers
         {
             var Countries = (from c in _userIdentityRepository.GetAppUser
                              where c.UserName.StartsWith(Prefix)
-                             select new { c.Email });
-            var b = _userIdentityRepository.GetAppUser
-                .Where(u => u.Email.StartsWith(Prefix));
+                             select new { value = c.UserName });
+        
            
-            return Json(_userIdentityRepository
-                .GetAppUser.FirstOrDefault(x => x.UserName == Prefix));
+            return Json(Countries);
         }
-       
+
+        [HttpPost]
+        public JsonResult AutoComplete(string Prefix)
+        {
+            var Countries = (from c in _userIdentityRepository.GetAppUser
+                             where c.UserName.StartsWith(Prefix)
+                             select new { value = c.UserName });
+            
+
+            return Json(Countries);
+        }
+
+
+
     }
+
+    
 }
