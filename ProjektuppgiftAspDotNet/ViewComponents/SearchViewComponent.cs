@@ -17,13 +17,20 @@ namespace ProjektuppgiftAspDotNet.ViewComponents
         }
 
         [HttpGet]
-        public IViewComponentResult Invoke()
+        public IViewComponentResult Invoke(string Prefix)
         {
 
+            var user = (from c in _userIdentityRepository.GetAppUser
+                        where c.UserName.StartsWith(Prefix)
+                        select new { value = c.UserName });
+
+
+
+            return View("Default",_userIdentityRepository
+                .GetAppUser.FirstOrDefault(x => x.UserName == Prefix));
 
 
            
-            return View("Default");
         }
     }
 }
